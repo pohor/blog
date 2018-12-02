@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article_params = params.require(:article).permit(:title, :text)
     @article = Article.new(article_params)
     if @article.save
       redirect_to article_path(@article)
@@ -25,8 +24,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+
   def update
-    article_params = params.require(:article).permit(:title, :text)
     @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to article_path(@article)
@@ -39,6 +38,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path
+  end
+
+  private
+
+  def article_params
+    article_params = params.require(:article).permit(:title, :text)
   end
 
 end
