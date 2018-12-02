@@ -1,4 +1,4 @@
-<%= render 'errors' %>
+<%= render 'common/errors', model: @article %>
 
 <%= form_for @article do |f| %>
 <p>
@@ -6,7 +6,7 @@
   <%= f.text_field :title %>
 </p>
 <p>
-  <%= f.label :text %>
+  <%= f.label :text %><br>
   <%= f.text_area :text %>
 </p>
 <p>
