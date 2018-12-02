@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to article_path(@article)
     else
-      'articles/show'
+      render 'edit'
     end
   end
 
