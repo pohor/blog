@@ -12,35 +12,11 @@
 
 <h2>Comments</h2>
 
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-  <p>
-    <strong>Body:</strong>
-    <%= comment.body %>
-  </p>
-  <hr />
-<% end %>
+<%= render @article.comments %>
 
-<p>
-  <strong>Add comment:</strong>
-</p>
-<%= form_for @article.comments.new do |f| %>
-  <%= f.hidden_field :article_id %>
-  <p>
-    <%= f.label :commenter %>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<h3>Add comment:</h3>
+
+<%= render 'comments/form' %>
 
 <%= link_to 'Back to Articles', articles_path %>
 <%= link_to 'Edit Article', edit_article_path(@article) %>
