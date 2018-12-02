@@ -1,13 +1,15 @@
 <h1>My Articles</h1>
 <%= link_to 'New Article', new_article_path %>
-
+<br>
+<br>
 <table>
   <tr>
-    <th>Tile</th>
+    <th>Title</th>
     <th>Text</th>
     <th></th>
     <th></th>
     <th></th>
+    <th>Comments:</th>
   </tr>
   <% @articles.each do |article| %>
     <tr>
@@ -16,9 +18,10 @@
       <td><%= link_to 'Show', article_path(article) %></td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
       <td><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+      <td><%= article.comments.count %></td>
     </tr>
   <% end %>
 
 </table>
-
+<br>
 Articles: <%= @articles.count %>

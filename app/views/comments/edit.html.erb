@@ -1,0 +1,7 @@
+<h1>Edit Comment</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'delete comment', article_comment_path(article_id: @comment.article.id, id: @comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Back', article_path(@article) %>
