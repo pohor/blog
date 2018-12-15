@@ -8,6 +8,12 @@
   <strong>Text:</strong>
   <%= simple_format(@article.text) %>
 </p>
+<p>
+  <strong>Tags:</strong>
+  <% @article.tags.map do |tag| %>
+    <%= tag %>
+  <% end %>
+</p>
 
 
 <h2>Comments</h2>
