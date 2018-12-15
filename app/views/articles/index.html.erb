@@ -2,6 +2,18 @@
 <%= link_to 'New Article', new_article_path %>
 <br>
 <br>
+
+<%= form_tag articles_path, method: :get do %>
+  <div class="input-group">
+    <%= text_field_tag :q, "", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      </span>
+  </div>
+<% end %>
+<br>
+<br>
+
 <table class="table">
   <thead>
     <tr>

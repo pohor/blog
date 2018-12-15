@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all.order(id: :desc)
+    @articles = Article.all
+    @articles = @articles.where("? =any(tags)", params[:q]) if params[:q].present?
   end
 
   def new
@@ -37,6 +38,7 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_path
   end
+
 
 
   private
