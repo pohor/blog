@@ -11,7 +11,7 @@
 <p>
   <strong>Tags:</strong>
   <% @article.tags.map do |tag| %>
-    <%= link_to "#{tag}", articles_path(q: tag) %>
+    <%= link_to tag, articles_path(q: tag) %>
   <% end %>
 </p>
 
