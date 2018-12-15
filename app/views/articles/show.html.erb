@@ -5,6 +5,9 @@
   <%= @article.title %>
 </p>
 <p>
+  <strong>Author:</strong>
+   <%= @article.user.email %>
+<p>
   <strong>Text:</strong>
   <%= simple_format(@article.text) %>
 </p>
