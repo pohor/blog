@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment.article = @article
     if @comment.save
       session[:commenter] = @comment.commenter
+      flash[:notice] = "You have successfuly added a comment."
       redirect_to article_path(@article)
     else
       render 'articles/show'
@@ -19,6 +20,7 @@ class CommentsController < ApplicationController
   def update
     find_comment
     if @comment.update(comment_params)
+      flash[:notice] = "You have successfuly updated the comment."
       redirect_to article_path(@article)
     else
       render 'edit'
@@ -28,6 +30,7 @@ class CommentsController < ApplicationController
   def destroy
     find_comment
     @comment.destroy
+    flash[:notice] = "You have deleted the comment."
     redirect_to article_path(@article)
   end
 
