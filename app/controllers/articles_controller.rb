@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if @article.user != current_user || current_user.admin?
+    if @article.user != current_user && !current_user.admin?
       flash[:alert] = "You are not allowed to edit this."
       redirect_to articles_path
     end
