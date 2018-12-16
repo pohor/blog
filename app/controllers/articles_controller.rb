@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    redirect_to articles_path if @article.user != current_user
   end
 
   def update
