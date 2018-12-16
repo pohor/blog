@@ -26,14 +26,14 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if @article.user != current_user
+    if @article.user != current_user || current_user.admin?
       flash[:alert] = "You are not allowed to edit this."
       redirect_to articles_path
     end
   end
 
   def update
-    if @article.update(article_params)
+    if @article.update(article_params) || current_user.admin?
       flash[:notice] = "You have successfuly updated this Article."
       redirect_to article_path(@article)
     else
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if @article.user == current_user
+    if @article.user == current_user || current_user.admin?
       @article.destroy
       flash[:alert] = "You have deleted the Article."
       redirect_to articles_path

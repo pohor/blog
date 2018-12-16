@@ -29,9 +29,9 @@
 <%= render 'comments/form' %>
 
 <%= link_to 'Back to Articles', articles_path %>
-<% if @article.user == current_user %>
+<% if @article.user == current_user || current_user.admin? %>
   <%= link_to 'Edit Article', edit_article_path(@article) %>
 <% end %>
-<% if @article.user == current_user %>
+<% if @article.user == current_user || current_user.admin? %>
   <%= link_to 'Delete Article', article_path(@article), method: :delete, data: { confirm: 'Are you sure?'} %>
 <% end %>
