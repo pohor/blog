@@ -37,8 +37,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
-    redirect_to articles_path
+    if @article.user == current_user
+      @article.destroy
+    else
+      redirect_to articles_path
+    end
   end
 
 
