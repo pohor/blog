@@ -24,6 +24,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
       <th>Comments:</th>
     </tr>
   </thead>
@@ -44,7 +45,8 @@
             <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?'} %>
           <% end %>
           </td>
-          <td><%= article.comments.count %></td>
+          <td><%= link_to 'Summary', article_path(article), class: 'btn btn-info summary', id: "summary-#{article.id}" %></td>
+          <td><%= article.comments.count %></td
         </tr>
       <% end %>
   </tbody>

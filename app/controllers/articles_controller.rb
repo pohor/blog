@@ -26,7 +26,25 @@ class ArticlesController < ApplicationController
   def show
     @comment = Comment.new
     @like = Like.find_or_initialize_by(article: @article, user: current_user)
-    @article.increment!(:views_count)
+
+    respond_to do |format|
+      format.html do
+        @article.increment!(:views_count)
+        render
+      end
+
+      format.json do
+        render json: {
+          id: @article.id,
+          title: @article.title,
+          text: @article.text,
+          views_count: @article.views_count,
+          likes_count: @article.likes.count,
+          comments_count: @article.comments.count
+        }
+      end
+    end
+
   end
 
   def edit
