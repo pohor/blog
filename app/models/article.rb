@@ -12,6 +12,10 @@ class Article < ApplicationRecord
   has_many :likes
   has_many :users, through: :likes
 
+  def css_class
+    'normal'
+  end
+
   private
 
   def sanitize_tags(text)
