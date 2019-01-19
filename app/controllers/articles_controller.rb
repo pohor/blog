@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :authorize_article, only: [:destroy, :edit, :update]
+  before_action :authorize_user, only: [:destroy, :edit, :update]
 
   def index
     @articles = Article.all
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(article_params) || current_user.admin?
+    if @article.update(article_params) || current_user&.admin?
       flash[:notice] = "You have successfuly updated this Article."
       redirect_to article_path(@article)
     else
@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
 
   private
 
-  def authorize_article
+  def authorize_user
     if @article.user != current_user && !current_user&.admin?
       flash[:alert] = "You are not allowed to do this."
       redirect_to articles_path

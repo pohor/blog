@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'welcome#index'
-  get 'welcome/index'
+  root 'articles#index'
+  get 'articles/index'
 
   # get 'articles', to: 'articles#index'
   # get 'articles/new', to: 'articles#new', as: 'new_article'
@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-  
+
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
