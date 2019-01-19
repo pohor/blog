@@ -1,5 +1,10 @@
 <h1>My Article</h1>
-
+<%= pluralize(@article.likes.count, 'person') %> liked this article
+<% if @like.persisted? %>
+<i class="fa fa-thumbs-down"><%= link_to 'Unlike', article_like_path(@article, @like), method: :delete %></i>
+<% else %>
+<i class="fa fa-thumbs-up"> <%= link_to 'Like', article_likes_path(@article), method: :post %> </i>
+<% end %>
 <p>
  <strong>Title:</strong>
   <%= @article.title %>
