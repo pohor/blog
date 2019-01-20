@@ -14,6 +14,8 @@ class Article < ApplicationRecord
 
   scope :published, -> { where(published: true) }
 
+  scope :most_commented, -> { order(comments_count: :desc).first }
+
   def css_class
     if published?
       'normal'

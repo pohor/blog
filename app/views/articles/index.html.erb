@@ -11,6 +11,9 @@
           </span>
       </div>
     <% end %>
+<h4>Najczęściej komentowany Artykuł:</h4>
+<%= link_to @most_commented.title, article_path(@most_commented) %><br />
+Liczba komentarzy: <%= @most_commented.comments_count %>
 
 <br>
 <br>

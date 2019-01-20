@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     get 'toggle_visibility', on: :member
+    get 'most_commented', on: :member
     resources :comments
     resources :likes, only: %i[create destroy]
   end
