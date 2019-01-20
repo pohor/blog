@@ -21,6 +21,8 @@ gem 'carrierwave', '~> 1.0'
 
 gem 'devise'
 
+gem 'cloudinary'
+
 gem 'font-awesome-rails'
 
 gem 'kaminari'
