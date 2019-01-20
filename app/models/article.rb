@@ -1,9 +1,6 @@
 class Article < ApplicationRecord
 
-  def tags=(tag_list)
-    tag_list = sanitize_tags(tag_list) if tag_list.is_a?(String)
-    super(tag_list)
-  end
+  mount_uploader :cover, CoverUploader
 
   validates :title, presence: true, length: {  minimum: 5 }
 
@@ -15,6 +12,11 @@ class Article < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   scope :most_commented, -> { order(comments_count: :desc).first }
+
+  def tags=(tag_list)
+    tag_list = sanitize_tags(tag_list) if tag_list.is_a?(String)
+    super(tag_list)
+  end
 
   def css_class
     if published?
