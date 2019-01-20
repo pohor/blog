@@ -50,6 +50,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'dotenv'
 end
 
 group :development do
@@ -62,6 +63,7 @@ group :development do
 end
 
 group :test do
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
