@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
   end
 
   def find_article
-    @article = Article.find(params[:article_id])
+    @article = Article.published.find(params[:article_id])
   end
 
 

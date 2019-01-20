@@ -12,8 +12,14 @@ class Article < ApplicationRecord
   has_many :likes
   has_many :users, through: :likes
 
+  scope :published, -> { where(published: true) }
+
   def css_class
-    'normal'
+    if published?
+      'normal'
+    else
+      'unpublished'
+    end
   end
 
   private

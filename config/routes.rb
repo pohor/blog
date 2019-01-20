@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # delete 'articles/:id', to: 'articles#destroy' - resources generuje to wszystko
 
   resources :articles do
+    get 'toggle_visibility', on: :member
     resources :comments
     resources :likes, only: %i[create destroy]
   end
