@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def edit
   end
 

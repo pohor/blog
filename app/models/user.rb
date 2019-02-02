@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_articles, through: :likes, source: :article
 
+  has_many :scores
+  has_many :scored_comments, through: :scores, source: :comment
+
   def admin?
     admin
   end
