@@ -23,7 +23,6 @@ class ScoresController < ApplicationController
 
 
   def destroy
-    @score =
     @score.destroy
     redirect_to article_path(@article)
   end
