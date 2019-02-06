@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby version
+2.5.3
+## Rails version
+5.2.2
+## Additional gems used:
+- carrierwave 1.0
+- devise
+- cloudinary
+- font-awesome-rails
+- kaminari
+- bootstrap4-kaminari-views
+- dotenv - rails for cloudinary keys, please see .env-example
 
-Things you may want to cover:
+## What is this app?
+This is an application developed during the rails course I attended Oct '18 - Feb '19.
+It was used to learn basics or rails programming as well as some basics of js.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Heroku
+This app is deployed on heroku under: https://codesensei-blog.herokuapp.com/
