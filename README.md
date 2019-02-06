@@ -2,9 +2,12 @@
 
 ## Ruby version
 2.5.3
+
 ## Rails version
 5.2.2
+
 ## Additional gems used:
+- bootstrap 4.0
 - carrierwave 1.0
 - devise
 - cloudinary
