@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.published
     end
+
     @most_commented = @articles.most_commented
     @articles = @articles.includes(:user).order(id: :desc).page(params[:page]).per(2)
     @articles = @articles.where("? =any(tags)", params[:q]) if params[:q].present?
@@ -31,6 +32,7 @@ class ArticlesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @score = Score.new
     @like = Like.find_or_initialize_by(article: @article, user: current_user)
 
     respond_to do |format|

@@ -36,4 +36,16 @@ window.addEventListener('load', function () {
       request.send();
     }
 
+  var comments = document.querySelectorAll(".comment");
+
+  for(i = 0; i < comments.length; i++) {
+    var comment = comments[i]
+    var score = comment.getElementId("score");
+      if (parseInt(score.innerText) <= -1) {
+        comment.setAttribute('style','display:none');
+        comment.innerText = "This comment has been hidden due to low rating";
+      } else {
+        comment.setAttribute('style','display:block');
+      }
+  }
 })

@@ -1,17 +1,37 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.user.email %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= simple_format(comment.body) %>
-</p>
-<p>
-  <strong>Date created:</strong>
-  <%= comment.created_at %>
-</p>
-<% if comment.user == current_user || current_user&.admin? %>
-    <%= link_to 'delete comment', article_comment_path(article_id: comment.article.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'edit comment', edit_article_comment_path(article_id: comment.article.id, id: comment.id)%>
-<% end %>
-<hr />
+<div class="comment" id="comment-<%=comment.id%>" style="display:block;">
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.user.email %>
+  </p>
+  <p>
+    <strong>Body:</strong>
+    <%= simple_format(comment.body) %>
+  </p>
+  <p>
+    <strong>Date created:</strong>
+    <%= comment.created_at %>
+
+  <p id="score-comment-<%=comment.id%>"><%= comment.score_value %></p>
+  <p>
+    <% if comment&.scores.any? { |score| score.user == current_user } %>
+        <%= link_to 'delete your rating', article_comment_score_path(@article, comment, comment.scores.for_user(current_user)), method: :delete %>
+    <% else %>
+      <%= form_for [comment, @score], url: article_comment_scores_path(@article, comment) do |f| %>
+        <p>
+          <%= f.label :value, "score comment:" %>
+          <%= f.collection_radio_buttons :value, [[1, '+'] ,[-1, '-']], :first, :last %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+      <% end %>
+    </p>
+  <% end %>
+  </p>
+
+  <% if comment.user == current_user || current_user&.admin? %>
+      <%= link_to 'delete comment', article_comment_path(article_id: comment.article.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'edit comment', edit_article_comment_path(article_id: comment.article.id, id: comment.id)%>
+  <% end %>
+  <hr />
+</div>
